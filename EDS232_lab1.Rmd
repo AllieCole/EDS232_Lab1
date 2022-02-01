@@ -329,14 +329,17 @@ plot(mdl, scale=0)
 ```
 #### Question: Which GAM environmental variables, and even range of values, seem to contribute most towards presence (above 0 response) versus absence (below 0 response)?
 Presence 
-  - WC_bio2 seems to be describing 6-8 range 
+  - WC_bio2 seems to be describing 6-8 range and above 18 for the presence and none for absence
+  - Lon describes the presence most at ranges 27-32 and 35-40
+  - Lat seems to describe both prensense and absence the most, and alternates its ranges. 
   
 Absence 
-  - ER_topoWet seems to describe the absence data from 0-8 and after 15
+  - ER_topoWet seems to describe the absence data from 0-8 and after 15, the confidence interval seem to go into presence from 0-4 but I woudl not use that difentitvely.
   
-  
-WC_alt 
-WC_bio2 <- This one 
+Neither 
+  - WC_alt doesn't seem to be good at describing any variables
+  - WC_bio1 is the opposite of trend of alt and still doesn't not seem to contribute to presence or absence. 
+  - ER_tri stays pretty close to zero the entire time but as you reach 100 the confidene intervals seem to get much larger. 
 
 
 ### 2.5 Maxent (Maximum Entropy)
@@ -377,11 +380,7 @@ response(mdl)
 ```
 #### Question: Which Maxent environmental variables, and even range of values, seem to contribute most towards presence (closer to 1 response) and how might this differ from the GAM results?
 
-Presence 
-  - WC_bio2 seems to be describing 6-8 range 
-  
-Absence 
-  - ER_topoWet seems to describe the absence data from 0-8 and after 15
+This seems to be going against the GAM results, as it seems to be saying that Alt and bio2 describe the most presence, while in the GAM results those were two of the lower results. 
 
 ```{r}
 # predict
