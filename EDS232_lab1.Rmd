@@ -28,8 +28,8 @@ dir.create(dir_data, showWarnings = F)
 #### Choosing a species
 I chose the Lilac Breasted Roller, one of my favorite birds since I was a child. 
 
-![](~/EDS232/EDS232_Lab1/1800-1.jpg)
-![](~/EDS232/EDS232_Lab1/1800.jpg)
+![](1800-1.jpg)
+![](1800.jpg)
 
 
 
@@ -245,7 +245,7 @@ pts_env %>%
 
 # And now Part B
 
-```{r setup, include=FALSE}
+```{r}
 
 librarian::shelf(
   DT, dplyr, dismo, GGally, here, readr, tidyr)
@@ -393,7 +393,7 @@ plot(wrld_simpl, add=TRUE, border='dark grey')
 
 # Moving right along to part C
 
-```{r setup, include=FALSE}
+```{r}
 
 # load packages
 librarian::shelf(
@@ -476,7 +476,7 @@ plotcp(mdl)
 mdl$cptable
 ```
 #### Question: Based on the complexity plot threshold, what size of tree is recommended?
-The tree size recommended here is 6 
+The tree size recommended here is 15 
 
 # 2.3 
 
@@ -550,7 +550,7 @@ The random forest model is almost the same as the permutation model and the impu
 
 # And finally, you guessed it, Part D!
 
-```{r setup, include=FALSE}
+```{r}
 
 # load packages
 librarian::shelf(
@@ -682,9 +682,7 @@ plot(e, 'ROC')
 
 thr <- threshold(e)[['spec_sens']]
 thr
-```
 
-```{r}
 p_true <- na.omit(raster::extract(y_maxv, pts_test_p) >= thr)
 a_true <- na.omit(raster::extract(y_maxv, pts_test_a) < thr)
 
@@ -700,15 +698,9 @@ matrix(
   nrow=2, dimnames = list(
     c("present_obs", "absent_obs"),
     c("present_pred", "absent_pred")))
-```
-
-
-```{r}
 # add point to ROC plot
 points(fpr, tpr, pch=23, bg="blue")
-```
 
-```{r}
 plot(y_maxv > thr)
 
 ```
